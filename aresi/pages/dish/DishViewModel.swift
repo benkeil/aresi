@@ -1,0 +1,79 @@
+//
+//  DishViewModel.swift
+//  aresi
+//
+//  Created by Ben Keil on 13.08.23.
+//
+
+import CoreTransferable
+import Foundation
+import PhotosUI
+import SwiftUI
+
+@MainActor class DishViewModel: ObservableObject {
+  enum ImageState {
+    case empty
+    case loading(Progress)
+    case success(Image)
+    case failure(Error)
+  }
+
+  @Published var dish: Dish
+  @Published private(set) var editMode: Bool = false
+  @Published var imageState: ImageState = .success(Image("kua-kling"))
+  @Published var imageSelection: PhotosPickerItem? = nil {
+    didSet {
+      if let imageSelection {
+        let progress = loadTransferable(from: imageSelection)
+        imageState = .loading(progress)
+      } else {
+        imageState = .empty
+      }
+    }
+  }
+
+  init(dish: Dish) {
+    self.dish = dish
+  }
+
+  func deleteIngredient(_ element: Ingredient) {
+    dish.ingredients.removeAll { ingredient in
+      ingredient.id == element.id
+    }
+  }
+
+  func addIngredient() {
+    dish.ingredients.append(Ingredient.empty())
+  }
+
+  func saveDish() {
+    dish.ingredients.removeAll { ingredient in
+      ingredient.name == "" && ingredient.amount == 0
+    }
+  }
+  
+  func deleteImage() -> Void {
+    imageState = .empty
+  }
+
+  // MARK: - Private Methods
+
+  private func loadTransferable(from imageSelection: PhotosPickerItem) -> Progress {
+    return imageSelection.loadTransferable(type: DishImage.self) { result in
+      DispatchQueue.main.async {
+        guard imageSelection == self.imageSelection else {
+          print("Failed to get the selected item.")
+          return
+        }
+        switch result {
+        case let .success(dishImage?):
+          self.imageState = .success(dishImage.image)
+        case .success(nil):
+          self.imageState = .empty
+        case let .failure(error):
+          self.imageState = .failure(error)
+        }
+      }
+    }
+  }
+}
