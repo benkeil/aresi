@@ -12,9 +12,35 @@ import SwiftUI
 struct Dish: Hashable, Codable, Identifiable {
   var id: UUID = .init()
   var name: String
+  var category: Category
   var ingredients: [Ingredient]
   var preparation: String
   var image: String
+}
+
+extension Dish {
+  static func empty(category: Category = .food) -> Dish {
+    return Dish(name: "", category: category, ingredients: [], preparation: "", image: "")
+  }
+}
+
+enum Category: String, Hashable, Codable, CaseIterable, Identifiable, Comparable {
+  var id: Self { self }
+  case pastry
+  case beverage
+  case food
+
+  static func < (lhs: Category, rhs: Category) -> Bool {
+    return lhs.rawValue < rhs.rawValue
+  }
+
+  static func > (lhs: Category, rhs: Category) -> Bool {
+    return lhs.rawValue > rhs.rawValue
+  }
+
+  static func == (lhs: Category, rhs: Category) -> Bool {
+    return lhs.rawValue == rhs.rawValue
+  }
 }
 
 enum TransferError: Error {
@@ -56,7 +82,9 @@ struct Ingredient: Hashable, Codable, Identifiable {
   }
 }
 
-enum Unit: LocalizedStringKey, Hashable, Codable, CaseIterable {
+// enum Unit: LocalizedStringKey, Hashable, Codable, CaseIterable, Identifiable {
+enum Unit: String, Hashable, Codable, CaseIterable, Identifiable {
+  var id: Self { self }
   case gram
   case liter
   case milliliter

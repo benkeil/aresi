@@ -21,6 +21,9 @@ enum DishesViewState {
 
   @Published private(set) var state: DishesViewState = .loading
   @Published private(set) var dishes: [Dish] = []
+  @Published var sorted: [Dictionary<Category, [Dish]>.Element] = []
+  
+  @Published var searchText: String = ""
 
   // MARK: inputs
 
@@ -32,6 +35,8 @@ enum DishesViewState {
     do {
       try await Task.sleep(for: .seconds(1))
       dishes = try! await dishRepository.getAll()
+      let groups = Dictionary(grouping: dishes, by: \.category)
+      sorted = groups.sorted(by: { $0.key < $1.key })
       state = .success
     } catch {
       state = .loading
@@ -39,7 +44,7 @@ enum DishesViewState {
   }
 
   func addDish() {
-    dishes.append(Dish(name: newDish, ingredients: [], preparation: "", image: ""))
+    dishes.append(Dish.empty(category: .food))
     newDish = ""
   }
 }

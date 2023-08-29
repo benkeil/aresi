@@ -10,7 +10,6 @@ import SwiftUI
 struct Title: ViewModifier {
   func body(content: Content) -> some View {
     content
-      .textCase(.uppercase)
       .font(.title)
       .frame(maxWidth: .infinity, alignment: .leading)
       .padding(.vertical)

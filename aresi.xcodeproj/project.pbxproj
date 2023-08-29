@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B515DB152A88EC370039FDCF /* DishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515DB142A88EC370039FDCF /* DishView.swift */; };
 		B515DB172A88EC870039FDCF /* DishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515DB162A88EC870039FDCF /* DishViewModel.swift */; };
+		B519DB652A9A8D230042F236 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B519DB642A9A8D230042F236 /* ImagePicker.swift */; };
+		B519DB692A9D22060042F236 /* NavigationTransitions in Frameworks */ = {isa = PBXBuildFile; productRef = B519DB682A9D22060042F236 /* NavigationTransitions */; };
 		B5D018912A88083C001E317C /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D018902A88083C001E317C /* Dish.swift */; };
 		B5D018952A880C6B001E317C /* DishesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D018942A880C6B001E317C /* DishesView.swift */; };
 		B5D018972A880CC7001E317C /* DishesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D018962A880CC7001E317C /* DishesViewModel.swift */; };
@@ -26,11 +28,10 @@
 		B5FD389A2A8D498D001A043D /* ApplicationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FD38992A8D498D001A043D /* ApplicationContext.swift */; };
 		B5FD389F2A8D715E001A043D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5FD38A12A8D715E001A043D /* Localizable.strings */; };
 		B5FD38A82A8D79FD001A043D /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FD38A72A8D79FD001A043D /* Title.swift */; };
-		B5FD38AA2A8DF717001A043D /* IngredientComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FD38A92A8DF717001A043D /* IngredientComponent.swift */; };
 		B5FD38AC2A9901CB001A043D /* DishEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FD38AB2A9901CB001A043D /* DishEditView.swift */; };
 		B5FD38AE2A993A9C001A043D /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FD38AD2A993A9C001A043D /* ImageButton.swift */; };
-		B5FD38B02A9A420F001A043D /* DummyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FD38AF2A9A420F001A043D /* DummyPicker.swift */; };
 		B5FD38B52A9A4E17001A043D /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FD38B42A9A4E17001A043D /* View+.swift */; };
+		B5FD38B82A9A79B6001A043D /* ViewHeightKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FD38B72A9A79B6001A043D /* ViewHeightKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 /* Begin PBXFileReference section */
 		B515DB142A88EC370039FDCF /* DishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishView.swift; sourceTree = "<group>"; };
 		B515DB162A88EC870039FDCF /* DishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewModel.swift; sourceTree = "<group>"; };
+		B519DB642A9A8D230042F236 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		B519DB662A9A9D8B0042F236 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B5D018902A88083C001E317C /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		B5D018922A880935001E317C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B5D018942A880C6B001E317C /* DishesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesView.swift; sourceTree = "<group>"; };
@@ -76,11 +79,10 @@
 		B5FD38A22A8D7183001A043D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B5FD38A32A8D7186001A043D /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B5FD38A72A8D79FD001A043D /* Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
-		B5FD38A92A8DF717001A043D /* IngredientComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientComponent.swift; sourceTree = "<group>"; };
 		B5FD38AB2A9901CB001A043D /* DishEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishEditView.swift; sourceTree = "<group>"; };
 		B5FD38AD2A993A9C001A043D /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
-		B5FD38AF2A9A420F001A043D /* DummyPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyPicker.swift; sourceTree = "<group>"; };
 		B5FD38B42A9A4E17001A043D /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		B5FD38B72A9A79B6001A043D /* ViewHeightKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHeightKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B519DB692A9D22060042F236 /* NavigationTransitions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,7 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				B5FD388D2A8D26AE001A043D /* EditableText.swift */,
-				B5FD38A92A8DF717001A043D /* IngredientComponent.swift */,
+				B519DB642A9A8D230042F236 /* ImagePicker.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -188,6 +191,8 @@
 		B5E3E8F52A87F8D50073494C /* aresi */ = {
 			isa = PBXGroup;
 			children = (
+				B519DB662A9A9D8B0042F236 /* Info.plist */,
+				B5FD38B62A9A79A1001A043D /* swiftui */,
 				B5FD38B12A9A4279001A043D /* extensions */,
 				B5FD38A62A8D79E5001A043D /* viewmodifier */,
 				B5FD38902A8D4127001A043D /* adapters */,
@@ -265,7 +270,6 @@
 			children = (
 				B5FD38A72A8D79FD001A043D /* Title.swift */,
 				B5FD38AD2A993A9C001A043D /* ImageButton.swift */,
-				B5FD38AF2A9A420F001A043D /* DummyPicker.swift */,
 			);
 			path = viewmodifier;
 			sourceTree = "<group>";
@@ -276,6 +280,14 @@
 				B5FD38B42A9A4E17001A043D /* View+.swift */,
 			);
 			path = extensions;
+			sourceTree = "<group>";
+		};
+		B5FD38B62A9A79A1001A043D /* swiftui */ = {
+			isa = PBXGroup;
+			children = (
+				B5FD38B72A9A79B6001A043D /* ViewHeightKey.swift */,
+			);
+			path = swiftui;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,6 +307,7 @@
 			);
 			name = aresi;
 			packageProductDependencies = (
+				B519DB682A9D22060042F236 /* NavigationTransitions */,
 			);
 			productName = aresi;
 			productReference = B5E3E8F32A87F8D50073494C /* aresi.app */;
@@ -371,6 +384,7 @@
 			);
 			mainGroup = B5E3E8EA2A87F8D50073494C;
 			packageReferences = (
+				B519DB672A9D22060042F236 /* XCRemoteSwiftPackageReference "swiftui-navigation-transitions" */,
 			);
 			productRefGroup = B5E3E8F42A87F8D50073494C /* Products */;
 			projectDirPath = "";
@@ -417,15 +431,15 @@
 			files = (
 				B5D018972A880CC7001E317C /* DishesViewModel.swift in Sources */,
 				B5FD38B52A9A4E17001A043D /* View+.swift in Sources */,
-				B5FD38B02A9A420F001A043D /* DummyPicker.swift in Sources */,
 				B5FD38942A8D4165001A043D /* DishRepository.swift in Sources */,
-				B5FD38AA2A8DF717001A043D /* IngredientComponent.swift in Sources */,
 				B5D018952A880C6B001E317C /* DishesView.swift in Sources */,
 				B515DB152A88EC370039FDCF /* DishView.swift in Sources */,
 				B5D018912A88083C001E317C /* Dish.swift in Sources */,
+				B519DB652A9A8D230042F236 /* ImagePicker.swift in Sources */,
 				B5E3E8F92A87F8D50073494C /* ContentView.swift in Sources */,
 				B5FD389A2A8D498D001A043D /* ApplicationContext.swift in Sources */,
 				B5FD38A82A8D79FD001A043D /* Title.swift in Sources */,
+				B5FD38B82A9A79B6001A043D /* ViewHeightKey.swift in Sources */,
 				B515DB172A88EC870039FDCF /* DishViewModel.swift in Sources */,
 				B5FD38AC2A9901CB001A043D /* DishEditView.swift in Sources */,
 				B5FD38AE2A993A9C001A043D /* ImageButton.swift in Sources */,
@@ -607,6 +621,8 @@
 				DEVELOPMENT_TEAM = T7RPPEEAWX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = aresi/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app wants to take photos from your dishes";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -636,6 +652,8 @@
 				DEVELOPMENT_TEAM = T7RPPEEAWX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = aresi/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app wants to take photos from your dishes";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -770,6 +788,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B519DB672A9D22060042F236 /* XCRemoteSwiftPackageReference "swiftui-navigation-transitions" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/davdroman/swiftui-navigation-transitions.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B519DB682A9D22060042F236 /* NavigationTransitions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B519DB672A9D22060042F236 /* XCRemoteSwiftPackageReference "swiftui-navigation-transitions" */;
+			productName = NavigationTransitions;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B5E3E8EB2A87F8D50073494C /* Project object */;
 }

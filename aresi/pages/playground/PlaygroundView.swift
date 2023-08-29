@@ -7,45 +7,38 @@
 
 import SwiftUI
 
+enum Thickness: String, CaseIterable, Identifiable {
+  case thin
+  case regular
+  case thick
+
+  var id: String { rawValue }
+}
+
+struct Border {
+  var color: Color
+  var thickness: Thickness
+}
+
 struct PlaygroundView: View {
-  @State private var names = ["a", "b", "c", "d"]
-  @State private var selection: String?
+  @State private var searchText = ""
+
+  @State private var selectedObjectBorders = [
+    Border(color: .black, thickness: .thin),
+    Border(color: .red, thickness: .thick),
+  ]
 
   var body: some View {
-    NavigationStack {
-      Form {
-        HStack {
-            Picker("picker", selection: $selection) {
-              ForEach(names, id: \.self) {
-                Text($0)
-              }
-            }
-            TextField("foo", text: .constant("foo"))
-            TextField("baz", text: .constant("baz"))
-        }
-        HStack {
-          TextField("foo", text: .constant("foo"))
-          Picker("picker", selection: $selection) {
-            ForEach(names, id: \.self) {
-              Text($0)
-            }
-          }
-          TextField("baz", text: .constant("baz"))
-        }
-//        HStack {
-          Group {
-            TextField("foo", text: .constant("foo"))
-            TextField("baz", text: .constant("baz"))
-            Picker("picker", selection: $selection) {
-              ForEach(names, id: \.self) {
-                Text($0)
-              }
-            }
-//          }
-        }
-        Text("....")
+    Picker(
+      "Border Thickness",
+      sources: $selectedObjectBorders,
+      selection: \.thickness
+    ) {
+      ForEach(Thickness.allCases) { thickness in
+        Text(thickness.rawValue)
       }
     }
+    .pickerStyle(.segmented)
   }
 }
 

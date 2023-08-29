@@ -23,6 +23,7 @@ struct ContentView: View {
         }
         .tag(1)
       DishEditView()
+        .environment(\.editMode, .constant(.active))
         .font(.title)
         .tabItem {
           Image(systemName: "pencil")

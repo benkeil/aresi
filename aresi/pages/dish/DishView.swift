@@ -6,50 +6,52 @@
 //
 
 import AVKit
+import NavigationTransitions
 import PhotosUI
 import SwiftUI
 
 struct DishView: View {
-  @Environment(\.editMode) private var editMode
   @Environment(\.defaultMinListRowHeight) var minRowHeight
-
-  private var isEditing: Bool {
-    editMode?.wrappedValue.isEditing == true
-  }
 
   @StateObject var viewModel: DishViewModel = .init(dish: Dish.mock())
 
+  @State private var editMode: Bool = false
+
   var body: some View {
-    ScrollView {
-      dishView
-        .navigationTitle(viewModel.dish.name)
-        .navigationBarTitleDisplayMode(.inline)
+    if editMode {
+      DishEditView(viewModel: DishViewModel(dish: viewModel.dish))
         .toolbar {
-          if isEditing {
+          ToolbarItem(placement: .primaryAction) {
             Button {
-              print("cancel")
+              editMode.toggle()
             } label: {
-              Text("Cancel")
+              Text("Save")
             }
           }
-          EditButton()
         }
-        .onChange(of: isEditing) { value in
-          if value {
-            // do something
-          } else {
-            viewModel.saveDish()
+    } else {
+      ScrollView {
+        dishView
+          .navigationTitle(viewModel.dish.name)
+          .navigationBarTitleDisplayMode(.automatic)
+          .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+              Button {
+                editMode.toggle()
+              } label: {
+                Text("Edit")
+              }
+            }
           }
-        }
-        .padding()
+          .padding()
+      }
     }
   }
 
   @ViewBuilder
   var dishView: some View {
-    EditableText(value: $viewModel.dish.name)
-      .title()
     image
+      .cornerRadius(10)
     ingredients
     preparation
     Spacer()
@@ -64,21 +66,11 @@ struct DishView: View {
         .scaledToFill()
         .frame(maxHeight: 250)
         .clipped()
-        .overlay(alignment: .bottomTrailing) {
-          if isEditing {
-            HStack {
-              deletePhoto
-              editPhoto
-            }
-          }
-        }
     case .loading:
       ProgressView()
         .frame(maxHeight: 250)
     case .empty:
-      if isEditing {
-        editPhoto
-      }
+      Color.clear
     case .failure:
       Image(systemName: "exclamationmark.triangle.fill")
         .resizable()
@@ -87,50 +79,22 @@ struct DishView: View {
     }
   }
 
-  var deletePhoto: some View {
-    Button {
-      viewModel.deleteImage()
-    } label: {
-      Image(systemName: "trash.circle")
-        .rountImageButton()
-    }
-  }
-
-  var editPhoto: some View {
-    PhotosPicker(selection: $viewModel.imageSelection,
-                 matching: .images,
-                 photoLibrary: .shared())
-    {
-      Image(systemName: "photo.circle")
-        .rountImageButton()
-    }
-  }
-
   @ViewBuilder
   var ingredients: some View {
     Text("Ingredients")
       .title()
     Divider()
-    Grid {
+    Grid(alignment: .leadingFirstTextBaseline, horizontalSpacing: 15) {
       ForEach($viewModel.dish.ingredients) { $ingredient in
         GridRow {
-          if isEditing == true {
-            Button(role: .destructive) {
-              viewModel.deleteIngredient($ingredient.wrappedValue)
-            } label: {
-              Image(systemName: "minus.circle.fill")
-            }
-          }
-          IngredientComponent(ingredient: $ingredient)
+          Text("\(ingredient.amount) \(ingredient.unit.rawValue)")
+            .gridColumnAlignment(.trailing)
+          Text(ingredient.name)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .gridColumnAlignment(.leading)
         }
+        .padding(.horizontal)
         Divider()
-      }
-    }
-    if isEditing == true {
-      Button {
-        viewModel.addIngredient()
-      } label: {
-        Label("add new ingredient", systemImage: "plus.circle.fill")
       }
     }
   }
@@ -139,8 +103,7 @@ struct DishView: View {
   var preparation: some View {
     Text("Zubereitung")
       .title()
-    EditableText(value: $viewModel.dish.preparation, useEditor: true)
-      .multilineTextAlignment(.leading)
+    Text(viewModel.dish.preparation)
   }
 }
 
